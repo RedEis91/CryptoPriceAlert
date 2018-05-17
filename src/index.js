@@ -12,7 +12,8 @@ var targetPriceVal
 
 const notification = {
 	title: 'BTC Alert',
-	body: 'BTC just beat your target price!'
+	body: 'BTC just beat your target price!',
+	icon: path.join(__dirname, '../assets/images/btc.png')
 }
 
 //using axios library for get request
