@@ -3,8 +3,8 @@ const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const url = require('url')
 const shell = require('electron').shell
-//recieve messages from processes and send data back out to processes
-const ipc = require('electron').ipcMain
+const ipc = require('electron').ipcMain //recieve all messages from processes/windows
+//and send data back out to processes/windows as needed`
 
 	// Keep a global reference of the window object, if you don't, the window will
 	// be closed automatically when the JavaScript object is garbage collected.
@@ -14,7 +14,7 @@ const ipc = require('electron').ipcMain
 	// Create the browser window.
 	win = new BrowserWindow({width: 800, height: 600})
 
-	// and load the index.html of the app.
+	// and load the index.html of the app into win
 	win.loadURL(url.format({
 	  pathname: path.join(__dirname, 'src/index.html'),
 	  protocol: 'file:',
@@ -22,7 +22,7 @@ const ipc = require('electron').ipcMain
 	}))
 
 	// Open the DevTools.
-	// win.webContents.openDevTools()
+	win.webContents.openDevTools()
 
 	// Emitted when the window is closed.
 	win.on('closed', () => {
@@ -42,7 +42,9 @@ const ipc = require('electron').ipcMain
 					label: 'CoinMarketCap',
 					click(){
 						shell.openExternal('http://coinmarketcap.com')
-					}
+					},
+					//defines keyboard shortcut to open coinmarketcap
+                	accelerator: 'CmdOrCtrl+Shift+C'
 
 				},
 				//separates menu items
@@ -52,14 +54,17 @@ const ipc = require('electron').ipcMain
 					label: 'Exit',
 					click() {
 						app.quit()
-					}
+					},
+					//defines keyboard shortcut to open coinmarketcap
+                	accelerator: 'CmdOrCtrl+Q'
+
 				}
 			]
 		}
 	])
 
 	Menu.setApplicationMenu(menu);
-	console.log("menu created?")
+	// console.log("menu created?")
 	}
 
 	// This method will be called when Electron has finished
@@ -84,10 +89,10 @@ const ipc = require('electron').ipcMain
 	}
 	})
 
-//sends user defined price to original window "win"
+//sends user defined price from add.html to original window "win" // index.html
 ipc.on('update-notify-value', function(event, arg){
+	//arg is user defined target price from text field of add.html
 	win.webContents.send('targetPriceVal', arg)
-})
-
+});
 	// In this file you can include the rest of your app's specific main process
 	// code. You can also put them in separate files and require them here.
