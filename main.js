@@ -22,7 +22,7 @@ const ipc = require('electron').ipcMain //recieve all messages from processes/wi
 	}))
 
 	// Open the DevTools.
-	win.webContents.openDevTools()
+	// win.webContents.openDevTools()
 
 	// Emitted when the window is closed.
 	win.on('closed', () => {
@@ -93,6 +93,11 @@ const ipc = require('electron').ipcMain //recieve all messages from processes/wi
 ipc.on('update-notify-value', function(event, arg){
 	//arg is user defined target price from text field of add.html
 	win.webContents.send('targetPriceVal', arg)
+});
+
+ipc.on('update-notify-value-eth', function(event, arg){
+	//arg is user defined target price from text field of add.html
+	win.webContents.send('targetPriceValEth', arg)
 });
 	// In this file you can include the rest of your app's specific main process
 	// code. You can also put them in separate files and require them here.
