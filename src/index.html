@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Cryptocurrency Price Tracker</title>
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
 	<div class="row">
 		<div id="price-container">
 			<p class="subtext">Current BTC USD</p>
-			<h1 id="price">Loading...</h1>
+			<h1 id="priceBtc">Loading...</h1>
 		</div>
 		<div id="goal-container">
 			<p>
@@ -28,7 +28,7 @@
 	<div class="row eth">
 		<div id="price-container-eth">
 			<p class="subtext">Current ETH USD</p>
-			<h2 id="priceEth">Loading...</h2>
+			<h1 id="priceEth">Loading...</h1>
 		</div>
 		<div id="goal-container-eth">
 			<p>
@@ -38,6 +38,22 @@
 		</div>
 		<div id="right-container-eth">
 			<button id="notifyBtnEth">Notify me when...</button>
+		</div>
+	</div>
+
+	<div class="row ltc">
+		<div id="price-container-ltc">
+			<p class="subtext">Current LTC USD</p>
+			<h1 id="priceLtc">Loading...</h1>
+		</div>
+		<div id="goal-container-ltc">
+			<p>
+				<img src="../assets/images/up.svg">
+				<span id="targetPriceLtc">Choose a Target Price</span>
+			</p>
+		</div>
+		<div id="right-container-ltc">
+			<button id="notifyBtnLtc">Notify me when...</button>
 		</div>
 	</div>
 

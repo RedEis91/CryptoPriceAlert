@@ -99,5 +99,10 @@ ipc.on('update-notify-value-eth', function(event, arg){
 	//arg is user defined target price from text field of add.html
 	win.webContents.send('targetPriceValEth', arg)
 });
+
+ipc.on('update-notify-value-ltc', function(event, arg){
+	//arg is user defined target price from text field of add.html
+	win.webContents.send('targetPriceValLtc', arg)
+});
 	// In this file you can include the rest of your app's specific main process
 	// code. You can also put them in separate files and require them here.
